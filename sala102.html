@@ -14,13 +14,14 @@
         function showPosition(position) {
             document.getElementById("latitude").value = position.coords.latitude;
             document.getElementById("longitude").value = position.coords.longitude;
+            document.getElementById("hora").value = new Date().toLocaleString();
         }
     </script>
 </head>
 <body>
     <h1>Bienvenido a la Sala 101</h1>
     <form method="post" action="procesar.php">
-        <input type="hidden" name="hora" value="<?php echo date('Y-m-d H:i:s'); ?>">
+        <input type="hidden" id="hora" name="hora" value="">
         <input type="hidden" id="latitude" name="latitude" value="">
         <input type="hidden" id="longitude" name="longitude" value="">
         <input type="submit" value="Presente" onclick="getLocation()">
