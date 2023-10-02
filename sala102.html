@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sala 101</title>
+    <title>Sala 102</title>
     <script>
         function getLocation() {
             if (navigator.geolocation) {
@@ -12,18 +12,31 @@
         }
 
         function showPosition(position) {
-            document.getElementById("latitude").value = position.coords.latitude;
-            document.getElementById("longitude").value = position.coords.longitude;
-            document.getElementById("hora").value = new Date().toLocaleString();
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var hora = new Date().toLocaleString();
+
+            // Mostrar la hora y la geolocalización en elementos HTML
+            document.getElementById("hora").innerHTML = "Hora: " + hora;
+            document.getElementById("latitude").innerHTML = "Latitud: " + latitude;
+            document.getElementById("longitude").innerHTML = "Longitud: " + longitude;
+
+            // Llenar los campos ocultos con los valores
+            document.getElementById("hora_input").value = hora;
+            document.getElementById("latitude_input").value = latitude;
+            document.getElementById("longitude_input").value = longitude;
         }
     </script>
 </head>
 <body>
-    <h1>Bienvenido a la Sala 101</h1>
+    <h1>Bienvenido a la Sala 102</h1>
+    <p id="hora"></p>
+    <p id="latitude"></p>
+    <p id="longitude"></p>
     <form method="post" action="procesar.php">
-        <input type="hidden" id="hora" name="hora" value="">
-        <input type="hidden" id="latitude" name="latitude" value="">
-        <input type="hidden" id="longitude" name="longitude" value="">
+        <input type="hidden" id="hora_input" name="hora" value="">
+        <input type="hidden" id="latitude_input" name="latitude" value="">
+        <input type="hidden" id="longitude_input" name="longitude" value="">
         <input type="submit" value="Presente" onclick="getLocation()">
     </form>
 </body>
