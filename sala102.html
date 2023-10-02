@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sala 101</title>
-</head>
-<body>
-    <h1>Bienvenido a la Sala 101</h1>
-    <form method="post" action="procesar.php">
-        <input type="hidden" name="estado" value="presente">
-        <input type="submit" value="Presente">
-    </form>
-</body>
-</html>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $hora = $_POST["hora"];
+
+    // Aquí puedes realizar cualquier acción que desees con la hora recibida, como guardarla en un archivo o realizar una acción específica.
+    
+    // Por ejemplo, guardar la hora en un archivo de registro:
+    file_put_contents("registro.txt", $hora . "\n", FILE_APPEND);
+
+    // Redireccionar de vuelta a la página de "sala101.html" o a donde desees.
+    header("Location: sala101.html");
+    exit;
+}
+?>
