@@ -4,15 +4,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    // Aquí puedes realizar cualquier acción que desees con la hora y la geolocalización recibidas, como guardarlas en un archivo o realizar una acción específica.
-    
-    // Por ejemplo, guardar la hora y la geolocalización en un archivo de registro:
+    // Abre o crea el archivo de registro y escribe los datos
     $registro = "Hora: " . $hora . "\n";
     $registro .= "Latitud: " . $latitude . "\n";
     $registro .= "Longitud: " . $longitude . "\n";
+
+    // Guarda los datos en un archivo de registro
     file_put_contents("registro.txt", $registro, FILE_APPEND);
 
-    // Redireccionar de vuelta a la página de "sala101.html" o a donde desees.
+    // Redirecciona de vuelta a la página de "sala101.html" o a donde desees.
     header("Location: sala101.html");
     exit;
 }
